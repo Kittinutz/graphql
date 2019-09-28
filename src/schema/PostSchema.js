@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express'
+import {gql} from "apollo-server-express";
 
 export default gql`
 	type Post {
@@ -7,4 +7,11 @@ export default gql`
 		createAt: String!
 		updateAt: String!
 	}
-`
+	extend type Query {
+		posts: [Post!]
+	}
+
+	extend type Mutation {
+		createPost(userId: Int!, message: String!): User
+	}
+`;
