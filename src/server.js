@@ -15,11 +15,12 @@ app.get('/',(req,res)=>{
 })
 server.applyMiddleware({ app });
 
-https.createServer({
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.cert')
-}, app).listen({ port: 4000 }, () =>
+// https.createServer({
+//   key: fs.readFileSync('server.key'),
+//   cert: fs.readFileSync('server.cert')
+// }, app).listen({ port: 4000 }, () =>
+//   console.log(`🚀 Server ready at https://localhost:4000${server.graphqlPath}`)
+// );
+app.listen({ port: 4000 }, () =>
   console.log(`🚀 Server ready at https://localhost:4000${server.graphqlPath}`)
 );
-
-console.log('test')
