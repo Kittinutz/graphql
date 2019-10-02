@@ -10,8 +10,9 @@ const typeDefs = schema;
 
 const server = new ApolloServer({ typeDefs, resolvers, context:{ db } });
 const app = express();
-app.get('/',(req,res)=>{
-  res.send('helloworld')
+app.get('/', async (req,res)=>{
+  const data = await db.User.findAll();
+  res.send(data);
 })
 server.applyMiddleware({ app });
 
