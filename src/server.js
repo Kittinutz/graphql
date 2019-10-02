@@ -11,7 +11,17 @@ const typeDefs = schema;
 const server = new ApolloServer({ typeDefs, resolvers, context:{ db } });
 const app = express();
 app.get('/', async (req,res)=>{
-  const data = await db.User.findAll();
+  console.log(db);
+  const data = await db.User.findOne({
+    where: {
+      id: 1,
+    },
+    include: [
+      {
+        model: db.users_posts,
+      }
+    ]
+  });
   res.send(data);
 })
 server.applyMiddleware({ app });
