@@ -19,6 +19,11 @@ app.get('/', async (req,res)=>{
     include: [
       {
         model: db.users_posts,
+        include:[
+          {
+            model:db.Post
+          }
+        ]
       }
     ]
   });
